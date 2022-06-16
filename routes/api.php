@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/importFile', [ClientController::class, 'importFile'])->name('client.importFile');
+Route::get('/getClientList', [ClientController::class, 'getClientList'])->name('client.getClientList');
+Route::post('/deleteRow', [ClientController::class, 'deleteClient'])->name('client.deleteClient');
+Route::get('/nameCountChart', [ClientController::class, 'getNameCount'])->name('client.nameCountChart');
+Route::get('/genderCountChart', [ClientController::class, 'getGenderCount'])->name('client.genderCountChart');
+Route::get('/mailCountChart', [ClientController::class, 'getMailCount'])->name('client.mailCountChart');
